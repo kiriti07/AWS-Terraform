@@ -13,7 +13,7 @@ pipeline {
         }
         stage('Plan') {
             steps {
-		            sh 'export TF_LOG=DEBUG && terraform plan > terraform-plan.log'
+		            sh 'export TF_LOG=DEBUG && terraform plan -lock=false > terraform-plan.log'
                    //sh 'terraform plan -debug'
                 	}
             	}
