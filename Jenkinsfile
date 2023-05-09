@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git url: 'https://github.com/kiriti07/Terraform-IAAS.git', branch: 'main'
+                git url: 'https://github.com/kiriti07/AWS-Terraform.git, branch: 'main'
             }
         }
         stage('Initialize') {
