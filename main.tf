@@ -3,7 +3,7 @@ resource "aws_instance" "App_instance" {
   instance_type = "t2.micro"
 
   tags = {
-    Name = "Example Instance 1"
+    Name = "WebAPP"
   }
 }
 resource "aws_key_pair" "terraform_ec2_key" {
