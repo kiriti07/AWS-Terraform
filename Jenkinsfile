@@ -13,17 +13,14 @@ pipeline {
         }
         stage('Plan') {
             steps {
-                sh 'export TF_LOG=DEBUG && terraform plan -lock=false -out=terraform.plan > terraform-plan.log'
-            }
-        }
-        stage('Debug') {
-            steps {
-                sh 'export TF_LOG=DEBUG && terraform apply -lock=false -auto-approve terraform.plan > terraform-apply.log'
+                //sh 'export TF_LOG=DEBUG && terraform plan -lock=false -out=terraform.plan > terraform-plan.log'
+                sh 'terraform plan'
             }
         }
         stage('Apply') {
             steps {
-                sh 'terraform apply -lock=false -auto-approve terraform.plan'
+                //sh 'terraform apply -lock=false -auto-approve terraform.plan'
+                sh 'terraform apply --auto-approve'
             }
         }
         stage('Cleanup') {
