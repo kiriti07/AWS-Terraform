@@ -6,7 +6,3 @@ resource "aws_instance" "App_instance" {
     Name = "WebAPP"
   }
 }
-resource "aws_key_pair" "terraform_ec2_key" {
-	key_name = "terraform_ec2_key"
-	public_key = file(".ssh/webapp-key.pub")
-}
