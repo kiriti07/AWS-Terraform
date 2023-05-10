@@ -1,8 +1,5 @@
 pipeline {
     agent any
-    options {
-        timeout(time: 30, unit: 'MINUTES')
-    }
     stages {
         stage('Checkout') {
             steps {
@@ -16,21 +13,22 @@ pipeline {
         }
         stage('Plan') {
             steps {
-                sh 'export TF_LOG=DEBUG && terraform plan -lock=false > terraform-plan.log'
+                sh 'export TF_LOG=DEBUG && terraform plan -lock=false -out=terraform.plan > terraform-plan.log'
             }
-            options {
-                timeout(time: 10, unit: 'MINUTES')
+        }
+        stage('Debug') {
+            steps {
+                sh 'export TF_LOG=DEBUG && terraform apply -lock=false -auto-approve terraform.plan > terraform-apply.log'
             }
         }
         stage('Apply') {
             steps {
-                sh 'export TF_LOG=DEBUG && terraform apply --auto-approve -debug > terraform-apply.log'
+                sh 'terraform apply -lock=false -auto-approve terraform.plan'
             }
         }
         stage('Cleanup') {
             steps {
                 echo 'EC2 Instance is Successfully Deployed'
-                //sh 'terraform destroy -auto-approve -var-file=terraform.tfvars'
             }
         }
     }
