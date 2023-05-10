@@ -24,7 +24,7 @@ pipeline {
         }
         stage('Apply') {
             steps {
-                sh 'terraform apply --auto-approve'
+                sh 'export TF_LOG=DEBUG && terraform apply --auto-approve -debug > terraform-apply.log'
             }
         }
         stage('Cleanup') {
