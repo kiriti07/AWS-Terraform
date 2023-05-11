@@ -20,7 +20,13 @@ pipeline {
         stage('Apply') {
             steps {
                 //sh 'terraform apply -lock=false -auto-approve terraform.plan'
-                sh 'terraform apply --auto-approve'
+                //sh 'terraform apply --auto-approve'
+            }
+        }
+        stage('Destroy') {
+            steps {
+                //sh 'terraform apply -lock=false -auto-approve terraform.plan'
+                sh 'terraform destroy'
             }
         }
         stage('Cleanup') {
