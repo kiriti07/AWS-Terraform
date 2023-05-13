@@ -14,6 +14,6 @@ provisioner "remote-exec" {
    ]
 }
   tags = {
-    Name = "Example Instance 1"
+    Name = "WebApp"
   }
 }
