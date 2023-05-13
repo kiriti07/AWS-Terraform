@@ -10,7 +10,7 @@ resource "aws_instance" "App_instance" {
 }
 provisioner "remote-exec" {
   inline = [ 
-    "sudo yum install tomcat -y"
+    "sudo yum install tomcat -y",
     "sudo yum install tomcat-webapps tomcat-admin-webapps"
    ]
 }
