@@ -21,6 +21,7 @@ pipeline {
             steps {
                 //sh 'terraform apply -lock=false -auto-approve terraform.plan'
                 sh 'terraform apply --auto-approve'
+                echo 'EC2 Instance is Successfully Applied'
             }
         }
         stage('Cleanup') {
