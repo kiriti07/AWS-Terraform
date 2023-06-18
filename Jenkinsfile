@@ -20,7 +20,7 @@ pipeline {
         stage('Apply') {
             steps {
                 //sh 'terraform apply -lock=false -auto-approve terraform.plan'
-                sh 'terraform apply --auto-approve'
+                sh 'terraform destroy'
                 echo 'EC2 Instance is Successfully Applied'
             }
         }
