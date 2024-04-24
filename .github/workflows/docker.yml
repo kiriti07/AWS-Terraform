@@ -27,4 +27,4 @@ jobs:
         path: './templates'
 
     - name: Run Docker Build
-      uses: ./templates/docker_build.yml
+      uses: ./docker_build.yml
