@@ -3,28 +3,15 @@ name: Docker Build Pipeline
 on:
   push:
     branches:
-      - 'main'  # Specify your branch here
+      - 'main'
     paths:
       - 'Dockerfile'
   pull_request:
     branches:
-      - 'main'  # Specify your branch here
+      - 'main'
     paths:
       - 'Dockerfile'
 
 jobs:
-  docker-build:
-    runs-on: ubuntu-latest
-
-    steps:
-    - name: Checkout code
-      uses: actions/checkout@v3
-
-    - name: Checkout Pipelines Repository
-      uses: actions/checkout@v3
-      with:
-        repository: 'kiriti07/pipelines'
-        path: './templates'
-
-    - name: Run Docker Build
-      uses: ./docker_build.yml
+  call-workflow:
+    uses: kiriti07/pipelines/.github/workflows/docker_build.yml@main
