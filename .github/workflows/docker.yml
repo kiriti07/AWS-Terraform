@@ -23,8 +23,8 @@ jobs:
     - name: Checkout Pipelines Repository
       uses: actions/checkout@v3
       with:
-        repository: 'kiriti07/AWS-Terraform'
-        path: '.github/pipelines'
+        repository: 'kiriti07/pipelines'
+        path: './templates'
 
     - name: Run Docker Build
-      uses: ./.github/pipelines/templates/docker_build.yml
+      uses: ./templates/docker_build.yml
