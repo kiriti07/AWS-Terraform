@@ -3,12 +3,12 @@ name: Docker Build Pipeline
 on:
   push:
     branches:
-      - 'develop'  # Specify your branch here
+      - 'main'  # Specify your branch here
     paths:
       - 'Dockerfile'
   pull_request:
     branches:
-      - 'develop'  # Specify your branch here
+      - 'main'  # Specify your branch here
     paths:
       - 'Dockerfile'
 
