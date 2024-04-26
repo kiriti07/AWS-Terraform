@@ -14,4 +14,4 @@ on:
 
 jobs:
   call-workflow:
-    uses: kiriti07/pipelines/.github/workflows/docker_build.yml@main
+    uses: kiriti07/test-workflow/.github/workflows/docker_build.yml@main
