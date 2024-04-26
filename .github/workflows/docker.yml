@@ -11,20 +11,18 @@ on:
       - 'main'
     paths:
       - 'Dockerfile'
-jobs:
-  application-build:
-    runs-on: ubuntu-latest
 
+jobs:
+  trigger-workflow:
+    runs-on: ubuntu-latest
     steps:
     - name: Checkout code
       uses: actions/checkout@v3
 
-    - name: Checkout Pipelines Repository
-      uses: actions/checkout@v3
+    - name: Trigger Workflow in Another Repo
+      uses: peter-evans/repository-dispatch@v1
       with:
-        repository: 'kiriti07/test-workflow'
-        path: '.github/workflows'
         token: ${{ secrets.TOKEN_GIT }}
-
-    - name: Run Application Build
-      uses: ./.github/workflows/docker_build.yml
+        repository: 'kiriti07/test-workflow'
+        event-type: 'trigger-docker-build'
+        client-payload: '{"ref": "main", "sha": "${{ github.sha }}"}'
