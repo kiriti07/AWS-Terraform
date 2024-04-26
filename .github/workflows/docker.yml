@@ -22,7 +22,7 @@ jobs:
     - name: Trigger Workflow in Another Repo
       uses: peter-evans/repository-dispatch@v1
       with:
-        token: ${{ secrets.TOKEN_GIT }}
+        # token: ${{ secrets.TOKEN_GIT }}
         repository: 'kiriti07/test-workflow'
         event-type: 'trigger-docker-build'
         client-payload: '{"ref": "main", "sha": "${{ github.sha }}"}'
