@@ -11,7 +11,20 @@ on:
       - 'main'
     paths:
       - 'Dockerfile'
-
 jobs:
-  call-workflow:
-    uses: kiriti07/pipelines/.github/workflows/docker_build.yml@main
+  application-build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Checkout Pipelines Repository
+      uses: actions/checkout@v3
+      with:
+        repository: 'kiriti07/test-workflow'
+        path: '.github/workflows'
+        token: ${{ secrets.TOKEN_GIT }}
+
+    - name: Run Application Build
+      uses: ./.github/workflows/docker_build.yml
